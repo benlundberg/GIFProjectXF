@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GifProjectXF.GifListView"
+             xmlns:local="clr-namespace:GifProjectXF"
+             xmlns:controls="clr-namespace:GifProjectXF.Controls"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Name="parent">
+
+    <Grid Padding="{StaticResource DevicePadding}">
+        <controls:ExtendedListView
+            ItemDisappearCommand="{Binding ItemDisappearCommand}"
+            ItemAppearCommand="{Binding ItemAppearCommand}"
+            IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConv}}"
+            ItemsSource="{Binding GifItems}"
+            SelectionMode="None"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Margin="10"
+                            Padding="10, 10, 10, 10">
+                            <Label 
+                                HorizontalTextAlignment="Center"
+                                FontSize="Title"
+                                TextColor="{StaticResource PrimaryColor}"
+                                Text="{Binding Title}" />
+                            <Grid HorizontalOptions="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <local:GifItemView Source="{Binding Path}" />
+                                <StackLayout
+                                    Grid.Row="1"
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Button 
+                                        IsVisible="{Binding IsFavourite}"
+                                        BackgroundColor="Transparent"
+	                                    Padding="10"
+	                                    Text="&#xf004;"
+                                        Command="{Binding BindingContext.FavouriteCommand, Source={x:Reference parent}}"
+	                                    CommandParameter="{Binding .}"
+                                        TextColor="{StaticResource PrimaryColor}"
+	                                    FontFamily="{StaticResource FontAwesomeSolid}" />
+                                    <Button 
+                                        IsVisible="{Binding IsFavourite, Converter={StaticResource InvertedBoolConv}}"
+                                        BackgroundColor="Transparent"
+	                                    Padding="10"
+	                                    Text="&#xf004;"
+                                        Command="{Binding BindingContext.FavouriteCommand, Source={x:Reference parent}}"
+	                                    CommandParameter="{Binding .}"
+                                        TextColor="{StaticResource PrimaryColor}"
+	                                    FontFamily="{StaticResource FontAwesomeRegular}" />
+                                    <Button 
+                                        BackgroundColor="Transparent"
+	                                    Padding="10"
+	                                    Text="&#xf1e0;"
+                                        Command="{Binding BindingContext.ShareCommand, Source={x:Reference parent}}"
+                                        CommandParameter="{Binding .}"
+	                                    TextColor="{StaticResource PrimaryColor}"
+	                                    FontFamily="{StaticResource FontAwesomeSolid}" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </controls:ExtendedListView>
+        <controls:LoadingView 
+            IsRunning="{Binding IsBusy}"
+            Color="{StaticResource PrimaryColor}"
+            TextColor="{StaticResource PrimaryColor}"
+            Text="{local:Translate Gen_Loading}"/>
+    </Grid>
+</ContentView>

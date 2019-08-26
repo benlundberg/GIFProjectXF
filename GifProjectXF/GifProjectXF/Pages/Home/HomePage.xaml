@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="{StaticResource PrimaryColor}"
+            BarTextColor="White"
+            android:TabbedPage.BarItemColor="#66FFFFFF"
+            android:TabbedPage.BarSelectedItemColor="White"
+            xmlns:local="clr-namespace:GifProjectXF"
+            x:Class="GifProjectXF.HomePage">
+
+    <local:TrendingPage>
+        <local:TrendingPage.BindingContext>
+            <local:TrendingViewModel />
+        </local:TrendingPage.BindingContext>
+    </local:TrendingPage>
+
+    <local:SearchPage>
+        <local:SearchPage.BindingContext>
+            <local:SearchViewModel />
+        </local:SearchPage.BindingContext>
+    </local:SearchPage>
+
+    <local:FavouritePage>
+        <local:FavouritePage.BindingContext>
+            <local:FavouriteViewModel />
+        </local:FavouritePage.BindingContext>
+    </local:FavouritePage>
+
+</TabbedPage>

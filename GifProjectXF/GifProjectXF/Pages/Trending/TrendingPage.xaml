@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GifProjectXF.TrendingPage"
+             xmlns:local="clr-namespace:GifProjectXF"
+             xmlns:controls="clr-namespace:GifProjectXF.Controls"
+             Title="{local:Translate Gen_Trends}">
+
+    <ContentPage.IconImageSource>
+        <FontImageSource 
+            Glyph="{StaticResource GeneralIcon}"
+			Color="White"
+			FontFamily="{StaticResource FontAwesomeBrands}"/>
+    </ContentPage.IconImageSource>
+
+    <local:GifListView />
+
+</ContentPage>

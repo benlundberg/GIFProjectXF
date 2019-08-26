@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GifProjectXF"
+             x:Class="GifProjectXF.FavouritePage"
+             Title="{local:Translate Gen_Favourite}">
+
+    <ContentPage.IconImageSource>
+        <FontImageSource 
+            Glyph="{StaticResource GeneralIcon}"
+			Color="White"
+			FontFamily="{StaticResource FontAwesomeBrands}"/>
+    </ContentPage.IconImageSource>
+    
+    <local:GifListView />
+    
+</ContentPage>
